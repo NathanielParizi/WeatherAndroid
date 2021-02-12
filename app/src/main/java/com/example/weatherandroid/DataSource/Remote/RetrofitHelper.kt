@@ -10,7 +10,7 @@ object RetrofitHelper {
 
 
     val retrofitInstance = Retrofit.Builder()
-        .baseUrl(NEWS_API_BASE_URL)
+        .baseUrl(WEATHER_API_BASE_URL)
         .client(getOkHttpClient())
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
