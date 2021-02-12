@@ -50,8 +50,6 @@ val appModule = module {
         builder
     }
 
-    single { Cipher.getInstance("AES/GCM/NoPadding") }
-    single { KeyStore.getInstance("AndroidKeyStore") }
 
 
 }

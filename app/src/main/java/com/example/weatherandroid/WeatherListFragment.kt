@@ -1,13 +1,12 @@
 package com.example.weatherandroid
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.weatherandroid.ViewModels.WeatherViewModel
-import com.example.weatherandroid.databinding.FragmentLookUpBinding
 import com.example.weatherandroid.databinding.FragmentWeatherListBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -28,7 +27,9 @@ class WeatherListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        findNavController().navigate(R.id.action_weatherListFragment_to_detailsFragment)
+
+//            findNavController().navigate(R.id.action_weatherListFragment_to_detailsFragment)
+
     }
 
 }

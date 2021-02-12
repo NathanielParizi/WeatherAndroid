@@ -10,17 +10,17 @@ import io.reactivex.schedulers.Schedulers
 
 class WeatherViewModel : ViewModel() {
 
-    private val newsListMutableLiveData = MutableLiveData<Any>()
-    val newsListLiveData: LiveData<Any>
-        get() = newsListMutableLiveData
+    private val weatherListMutableLiveData = MutableLiveData<Any>()
+    val weatherListLiveData: LiveData<Any>
+        get() = weatherListMutableLiveData
 
-    init {
-        IApiService
-            .getWeatherApiService()
-            .getWeather("Miami", API_KEY)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .map { result -> newsListMutableLiveData.postValue(result) }
-            .subscribe()
-    }
+//    init {
+//        IApiService
+//            .getWeatherApiService()
+//            .getWeather("Miami", API_KEY)
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribeOn(Schedulers.io())
+//            .map { result -> weatherListMutableLiveData.postValue(result) }
+//            .subscribe()
+//    }
 }

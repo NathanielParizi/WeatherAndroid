@@ -8,7 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitHelper {
 
-
     val retrofitInstance = Retrofit.Builder()
         .baseUrl(WEATHER_API_BASE_URL)
         .client(getOkHttpClient())
