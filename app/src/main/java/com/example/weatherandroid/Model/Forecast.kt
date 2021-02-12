@@ -8,6 +8,6 @@ data class Forecast(
     val pop: Double,
     val sys: Sys,
     val visibility: Int,
-    val weather: List<Forecast>,
+    val weather: List<Weather>,
     val wind: Wind
 )

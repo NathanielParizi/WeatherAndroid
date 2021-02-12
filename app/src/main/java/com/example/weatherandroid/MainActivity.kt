@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.weatherandroid.ViewModels.WeatherViewModel
 import com.example.weatherandroid.databinding.ActivityMainBinding
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.context.startKoin
 
 class MainActivity : AppCompatActivity() {
+
+    val weatherViewModel : WeatherViewModel by viewModel()
 
     private lateinit var navigation: Navigation
     private lateinit var binding: ActivityMainBinding
@@ -20,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        weatherViewModel.init()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Android App"

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.weatherandroid.ViewModels.WeatherViewModel
 import com.example.weatherandroid.databinding.FragmentLookUpBinding
@@ -28,11 +29,17 @@ class LookUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val k = weatherViewModel.weatherListLiveData.value
-        Log.d("GOLD", "onViewCreated: $k")
+        weatherViewModel.init()
+
+        weatherViewModel.weatherListLiveData.observe(viewLifecycleOwner, Observer {
+            Log.d("GOLD", "onViewCreated: $it")
+        })
+
+//        val k = weatherViewModel.weatherListLiveData.value
+//        Log.d("GOLD", "onViewCreated: $k")
 
         binding.lookUpBtn.setOnClickListener {
-        findNavController().navigate(R.id.action_lookUpFragment_to_weatherListFragment)
+            findNavController().navigate(R.id.action_lookUpFragment_to_weatherListFragment)
         }
     }
 
