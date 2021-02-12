@@ -12,7 +12,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 
 class LookUpFragment : Fragment() {
 
-    val newsViewModel: WeatherViewModel by viewModel()
+    val weatherViewModel: WeatherViewModel by viewModel()
 
     private var _binding: FragmentLookUpBinding? = null
     private val binding get() = _binding!!  //read only variable
@@ -27,7 +27,7 @@ class LookUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val k = newsViewModel.newsListLiveData.value
+        val k = weatherViewModel.newsListLiveData.value
         Log.d("GOLD", "onViewCreated: $k")
 //        findNavController().navigate(R.id.action_lookUpFragment_to_weatherListFragment)
     }
