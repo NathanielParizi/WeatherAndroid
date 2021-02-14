@@ -46,6 +46,7 @@ class WeatherViewModel : ViewModel(), KoinComponent {
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     weatherListMutableLiveData.postValue(response.body())
+                    Log.d("GOLD", "fetchNews: ${response.body().toString()} ")
                     Log.d("GOLD", "fetchNews: ${weatherListMutableLiveData.value} ")
                     loadingError2.value = null
                     loading2.value = false

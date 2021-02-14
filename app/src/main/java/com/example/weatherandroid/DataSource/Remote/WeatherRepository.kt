@@ -13,7 +13,7 @@ class WeatherRepository : KoinComponent {
         country: String,
         key: String
     ): Response<WeatherApiResponse> {
-        return magicService.getTopHeadLines(country, key)
+        return magicService.getWeather(country, key)
 
     }
 

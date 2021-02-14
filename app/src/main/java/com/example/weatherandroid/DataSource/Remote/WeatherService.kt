@@ -16,7 +16,7 @@ class WeatherService : KoinComponent {
             .build().create(IApiService::class.java)
     }
 
-    suspend fun getTopHeadLines(country: String, key: String): Response<WeatherApiResponse> {
-        return apiService.getWeather(country, key)
+    suspend fun getWeather(city: String, key: String): Response<WeatherApiResponse> {
+        return apiService.getWeather(city, key)
     }
 }
