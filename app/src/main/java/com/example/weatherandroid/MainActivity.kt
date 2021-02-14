@@ -14,8 +14,6 @@ import org.koin.core.context.startKoin
 
 class MainActivity : AppCompatActivity() {
 
-    val weatherViewModel : WeatherViewModel by viewModel()
-
     private lateinit var navigation: Navigation
     private lateinit var binding: ActivityMainBinding
 
@@ -24,8 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        weatherViewModel.init()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Android App"

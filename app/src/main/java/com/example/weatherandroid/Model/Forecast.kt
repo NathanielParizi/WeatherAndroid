@@ -1,5 +1,6 @@
 package com.example.weatherandroid.Model
 
+
 data class Forecast(
     val clouds: Clouds,
     val dt: Int,

@@ -1,5 +1,7 @@
 package com.example.weatherandroid
 
+import com.example.weatherandroid.DataSource.Remote.WeatherRepository
+import com.example.weatherandroid.DataSource.Remote.WeatherService
 import com.example.weatherandroid.ViewModels.WeatherViewModel
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -10,15 +12,14 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.security.KeyStore
 import java.text.DateFormat
 import java.util.concurrent.TimeUnit
-import javax.crypto.Cipher
 
 val appModule = module {
 
     viewModel { WeatherViewModel() }
-
+    single { WeatherService() }
+    single { WeatherRepository() }
 
     single {
         val gson: Gson = GsonBuilder()
@@ -46,10 +47,8 @@ val appModule = module {
             Retrofit.Builder()
                 .addConverterFactory(get<GsonConverterFactory>())
                 .client(get())
-
         builder
     }
-
 
 
 }

@@ -10,11 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.weatherandroid.ViewModels.WeatherViewModel
 import com.example.weatherandroid.databinding.FragmentLookUpBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
 class LookUpFragment : Fragment() {
 
-    val weatherViewModel: WeatherViewModel by viewModel()
+    //    val weatherViewModel : WeatherViewModel = WeatherViewModel()
+    val weatherViewModel: WeatherViewModel by inject()
+
 
     private var _binding: FragmentLookUpBinding? = null
     private val binding get() = _binding!!  //read only variable
@@ -29,7 +31,7 @@ class LookUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        weatherViewModel.init()
+        weatherViewModel.basicCoroutineFetch()
 
         weatherViewModel.weatherListLiveData.observe(viewLifecycleOwner, Observer {
             Log.d("GOLD", "onViewCreated: $it")

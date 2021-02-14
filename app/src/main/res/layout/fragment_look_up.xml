@@ -8,6 +8,7 @@
     tools:context=".LookUpFragment">
 
 
+
     <EditText
         android:id="@+id/lookUpCityEditText"
         android:layout_width="wrap_content"

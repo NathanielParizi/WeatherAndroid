@@ -1,4 +1,22 @@
 package com.example.weatherandroid.DataSource.Remote
 
-class WeatherService {
+import com.example.weatherandroid.Model.WeatherApiResponse
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import retrofit2.Response
+import retrofit2.Retrofit
+
+class WeatherService : KoinComponent {
+
+    private val retrofitBuilder: Retrofit.Builder by inject()
+    private var apiService: IApiService
+
+    init {
+        apiService = retrofitBuilder.baseUrl(WEATHER_API_BASE_URL)
+            .build().create(IApiService::class.java)
+    }
+
+    suspend fun getTopHeadLines(country: String, key: String): Response<WeatherApiResponse> {
+        return apiService.getWeather(country, key)
+    }
 }
