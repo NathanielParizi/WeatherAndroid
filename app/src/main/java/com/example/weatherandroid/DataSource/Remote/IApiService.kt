@@ -9,8 +9,8 @@ interface IApiService {
 
     @GET(PATH_WEATHER)
     suspend fun getWeather(
-        @Query(QUERY_PARAM_CITY) city: String,
-        @Query(QUERY_PARAM_API_KEY) key: String
+        @Query("q") city: String,
+        @Query("appid") key: String
     ): Response<WeatherApiResponse>
 
 //    @GET(PATH_WEATHER)

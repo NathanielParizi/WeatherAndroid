@@ -1,6 +1,5 @@
 package com.example.weatherandroid.Model
 
-
 data class City(
     val coord: Coord,
     val country: String,

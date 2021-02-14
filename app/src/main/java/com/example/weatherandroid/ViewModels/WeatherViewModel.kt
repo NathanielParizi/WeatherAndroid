@@ -37,7 +37,7 @@ class WeatherViewModel : ViewModel(), KoinComponent {
         job2 = CoroutineScope(Dispatchers.IO + exceptionHandler2).launch {
             val response: Response<WeatherApiResponse> =
                 service.getWeather(
-                    "miami", API_KEY
+                    "Miami", API_KEY
                 )
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
