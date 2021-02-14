@@ -15,20 +15,16 @@ import retrofit2.Response
 
 class WeatherViewModel : ViewModel(), KoinComponent {
 
-    protected val service: WeatherRepository by inject()
-
+    val service: WeatherRepository by inject()
+    private val weatherListMutableLiveData = MutableLiveData<WeatherApiResponse>()
+    val weatherListLiveData: LiveData<WeatherApiResponse>
+        get() = weatherListMutableLiveData
     val loading2 = MutableLiveData<Boolean>()
     val loadingError2 = MutableLiveData<String?>()
     var job2: Job? = null
     val exceptionHandler2 = CoroutineExceptionHandler { coroutineContext, throwable ->
         onError("Exception: ${throwable.localizedMessage}")
     }
-
-
-    private val weatherListMutableLiveData = MutableLiveData<WeatherApiResponse>()
-    val weatherListLiveData: LiveData<WeatherApiResponse>
-        get() = weatherListMutableLiveData
-
 
     fun onError(message: String) {
 //        loadingError2.value = message
@@ -46,7 +42,7 @@ class WeatherViewModel : ViewModel(), KoinComponent {
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     weatherListMutableLiveData.postValue(response.body())
-                    Log.d("GOLD", "fetchNews: ${response.body().toString()} ")
+                    Log.d("GOLD", "raw response: ${response.body().toString()} ")
                     Log.d("GOLD", "fetchNews: ${weatherListMutableLiveData.value} ")
                     loadingError2.value = null
                     loading2.value = false

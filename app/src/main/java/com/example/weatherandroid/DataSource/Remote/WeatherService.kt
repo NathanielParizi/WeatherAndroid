@@ -9,12 +9,8 @@ import retrofit2.Retrofit
 class WeatherService : KoinComponent {
 
     private val retrofitBuilder: Retrofit.Builder by inject()
-    private var apiService: IApiService
-
-    init {
-        apiService = retrofitBuilder.baseUrl(WEATHER_API_BASE_URL)
-            .build().create(IApiService::class.java)
-    }
+    private var apiService: IApiService = retrofitBuilder.baseUrl(WEATHER_API_BASE_URL)
+        .build().create(IApiService::class.java)
 
     suspend fun getWeather(city: String, key: String): Response<WeatherApiResponse> {
         return apiService.getWeather(city, key)
