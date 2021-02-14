@@ -10,10 +10,10 @@ class WeatherRepository : KoinComponent {
     private val magicService: WeatherService by inject()
 
     suspend fun getWeather(
-        country: String,
+        city: String,
         key: String
     ): Response<WeatherApiResponse> {
-        return magicService.getWeather(country, key)
+        return magicService.getWeather(city, key)
 
     }
 
